@@ -14,76 +14,87 @@ namespace First
     {
         HDD<int> hdd;
         GPU<int> gpu;
-        abstract class Components<T>
+
+        abstract class Comp<T>
         {
             public int Price;
             public int DateRelease;
             public T Article;
-            public Components(int price, int dateRelease, T article)
+            public Comp(int price, int daterelease, T article)
             {
                 Price = price;
-                DateRelease = dateRelease;
+                DateRelease = daterelease;
                 Article = article;
             }
             public virtual string Display()
             {
-                return $"Цена: {Price} \nГод выпуска: {DateRelease}";
+                return $"Цена: {Price} Год выпуска: {DateRelease}";
             }
         }
-        class HDD<T> : Components<T>
+        class HDD<T> : Comp<T>
         {
-            int Turnovers;
-            public int Turn
+            int Rate;
+            int Capacity;
+            string Face;
+
+            public HDD(int Price, int Daterelease, T Art, int rate, string face, int capacity) : base(Price, Daterelease, Art)
             {
-                get { return Turnovers; } set{ Turnovers = value; }
+                Rate = rate;
+                Capacity = capacity;
+                Face = face;
             }
-            string ConnectInterface;
-            public string Connect
+
+            public int Rates
             {
-                get{ return ConnectInterface; } set{ ConnectInterface = value; }
+                get { return Rate; } set{ Rate = value; }
             }
-            int Size;
-            public int size
+
+            public int Capacitys
             {
-                get{ return Size; } set{ Size = value; }
+                get { return Capacity; } set { Capacity = value; }
             }
-            public HDD(int Price, int DateSince, T Art, int turnovers, string connectInterface, int Size) : base(Price, DateSince, Art)
+
+            public string Faces
             {
-                Turn = turnovers;
-                Connect = connectInterface;
-                size = Size;
+                get{ return Face; } set{ Face = value; }
             }
+            
             public override string Display()
             {
-                return $"Цена: {Price} \nГод выпуска: {DateRelease} \nАртикул: {Article} \nСкорость оборротов: {Turn} \nИнтерфейс подключения: {Connect} \nОбъем: {size} ";
+                return $"Цена: {Price} Год выпуска: {DateRelease} Артикул: {Article} Скорость: {Rates} Интерфейс: {Faces} Объем: {Capacitys}";
             }
         }
-        class GPU<T> : Components<T>
+        class GPU<T> : Comp<T>
         {
             int FreqGPU;
+            string Manuf; 
+            int Mem; 
+
+            public GPU(int Price, int DateRelease, T Art, int freq, string manuf, int memsize) : base(Price, DateRelease, Art)
+            {
+                Freq = freq;
+                Manuf = manuf;
+                Memsize = memsize; 
+            }
+
             public int Freq
             {
                 get { return FreqGPU; } set { FreqGPU = value; }
             }
-            string Manufacture;
-            public string Manuf
+
+            public string Manu
             {
-                get { return Manufacture; } set { Manufacture = value; }
+                get { return Manuf; } set { Manuf = value; }
             }
-            int SizeMem;
-            public int Mem
+ 
+            public int Memsize
             {
-                get { return SizeMem; } set { SizeMem = value; }
+                get { return Mem; } set { Mem = value; }
             }
-            public GPU(int Price, int DateRelease, T Art, int freq, string manufacture, int sizeMem) : base(Price, DateRelease, Art)
-            {
-                Freq = freq;
-                Manuf = manufacture;
-                Mem = sizeMem;
-            }
+
             public override string Display()
             {
-                return $"Цена: {Price} \nГод выпуска: {DateRelease} \nАртикул: {Article} \nЧастота граф.процессора: {Freq}\n Производитель: {Manuf}\n Объем памяти: {Mem}";
+                return $"Цена: {Price} Год выпуска: {DateRelease} Артикул: {Article} Частота: {Freq} Производитель: {Manu} Объем памяти: {Memsize}";
             }
         }
 
@@ -97,11 +108,28 @@ namespace First
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             try
             {
-                hdd = new HDD<int>(Convert.ToInt32(textBox4.Text), Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox13.Text), Convert.ToInt32(textBox6.Text), textBox5.Text, Convert.ToInt32(textBox7.Text));
+                hdd = new HDD<int>(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text), textBox5.Text, Convert.ToInt32(textBox6.Text));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(hdd.Display());
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                gpu = new GPU<int>(Convert.ToInt32(textBox7.Text), Convert.ToInt32(textBox8.Text), Convert.ToInt32(textBox9.Text), Convert.ToInt32(textBox10.Text), textBox11.Text, Convert.ToInt32(textBox12.Text));
             }
             catch (Exception ex)
             {
@@ -111,24 +139,7 @@ namespace First
 
         private void button4_Click(object sender, EventArgs e)
         {
-            listBox2.Items.Add(hdd.Display());
+            listBox2.Items.Add(gpu.Display());
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                gpu = new GPU<int>(Convert.ToInt32(textBox12.Text), Convert.ToInt32(textBox11.Text), Convert.ToInt32(textBox15.Text), Convert.ToInt32(textBox10.Text), textBox9.Text, Convert.ToInt32(textBox8.Text));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            listBox3.Items.Add(gpu.Display());
-        }
-    }
+    } 
 }
