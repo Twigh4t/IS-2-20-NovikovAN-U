@@ -1,6 +1,6 @@
 ﻿namespace First
 {
-    partial class First
+    partial class Task1
     {
         /// <summary>
         /// Обязательная переменная конструктора.

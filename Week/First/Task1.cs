@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace First
 {
-    public partial class First : Form
+    public partial class Task1 : Form
     {
         HDD<int> hdd;
         GPU<int> gpu;
@@ -98,7 +98,7 @@ namespace First
             }
         }
 
-        public First()
+        public Task1()
         {
             InitializeComponent();
         }

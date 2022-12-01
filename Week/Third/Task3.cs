@@ -12,14 +12,14 @@ using static Third.Program;
 
 namespace Third
 {
-    public partial class Third : Form
+    public partial class Task3 : Form
     {       
         Connect connect = new Connect("server = chuc.caseum.ru;port=33333;username=st_2_20_19;password=69816309;database=is_2_20_st19_KURS");
         public void NumberBus()
         {
             string table = "Select *";
         }
-        public Third()
+        public Task3()
         {
             InitializeComponent();
         }

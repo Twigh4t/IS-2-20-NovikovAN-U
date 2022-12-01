@@ -84,16 +84,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Second.cs">
+    <Compile Include="Task2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Second.Designer.cs">
-      <DependentUpon>Second.cs</DependentUpon>
+    <Compile Include="Task2.Designer.cs">
+      <DependentUpon>Task2.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Second.resx">
-      <DependentUpon>Second.cs</DependentUpon>
+    <EmbeddedResource Include="Task2.resx">
+      <DependentUpon>Task2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

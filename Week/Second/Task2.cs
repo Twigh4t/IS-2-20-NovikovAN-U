@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Second
 {
-    public partial class Second : Form
+    public partial class Task2 : Form
     {
         public class Connect
         {
@@ -31,7 +31,7 @@ namespace Second
 
             }
         }
-        public Second()
+        public Task2()
         {
             InitializeComponent();
         }

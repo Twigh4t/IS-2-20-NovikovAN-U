@@ -7,6 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using First;
+using Second;
+using Third;
+//using Four;
+//using Fifth;
 
 namespace Menu
 {
@@ -16,21 +21,26 @@ namespace Menu
         {
             InitializeComponent();
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Form form = new First();
-            form.ShowDialog();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Form form = new Second();
-            form.ShowDialog();
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
-            Form form = new Third();
+            Form form = new Task3();
+            form.ShowDialog();
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Form form = new Task1();
+            form.ShowDialog();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Form form = new Task2();
             form.ShowDialog();
         }
     }

@@ -71,6 +71,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Второе задание";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button1
             // 
@@ -80,6 +81,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Первое задание";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Menu
             // 
@@ -93,6 +95,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Menu";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.ResumeLayout(false);
 
         }

@@ -37,7 +37,7 @@ namespace Third
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Third());
+            Application.Run(new Task3());
         }
     }
 }
