@@ -8,30 +8,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace First
+namespace Menu
 {
     public partial class Menu : Form
     {
-        public Menu()
-        {
-            InitializeComponent();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            First form = new First();
+            Form form = new First();
             form.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form form = new Form();
+            Form form = new Second();
             form.ShowDialog();
         }
-
-        private void Menu_Load(object sender, EventArgs e)
+        public Menu()
         {
+            InitializeComponent();
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form form = new Third();
+            form.ShowDialog();
         }
     }
 }

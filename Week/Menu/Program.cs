@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace First
+namespace Menu
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace First
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new First());
+            Application.Run(new Menu());
         }
     }
 }

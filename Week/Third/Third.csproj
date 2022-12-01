@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{84C48497-EE32-4A45-8B53-93EB12B13000}</ProjectGuid>
+    <ProjectGuid>{18E6E8A3-3862-4C3A-BD2C-748F9348F9C1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>First</RootNamespace>
-    <AssemblyName>First</AssemblyName>
+    <RootNamespace>Third</RootNamespace>
+    <AssemblyName>Third</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -84,16 +84,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="First.cs">
+    <Compile Include="Third.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="First.Designer.cs">
-      <DependentUpon>First.cs</DependentUpon>
+    <Compile Include="Third.Designer.cs">
+      <DependentUpon>Third.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="First.resx">
-      <DependentUpon>First.cs</DependentUpon>
+    <EmbeddedResource Include="Third.resx">
+      <DependentUpon>Third.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
