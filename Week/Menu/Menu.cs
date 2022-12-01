@@ -11,7 +11,11 @@ using System.Windows.Forms;
 namespace Menu
 {
     public partial class Menu : Form
-    {
+    {       
+        public Menu()
+        {
+            InitializeComponent();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             Form form = new First();
@@ -22,10 +26,6 @@ namespace Menu
         {
             Form form = new Second();
             form.ShowDialog();
-        }
-        public Menu()
-        {
-            InitializeComponent();
         }
 
         private void button3_Click(object sender, EventArgs e)
