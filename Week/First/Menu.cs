@@ -19,14 +19,19 @@ namespace First
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form1 form = new Form1();
+            First form = new First();
             form.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form2 form = new Form2();
+            Form form = new Form();
             form.ShowDialog();
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

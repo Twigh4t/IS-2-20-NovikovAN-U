@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{84C48497-EE32-4A45-8B53-93EB12B13000}</ProjectGuid>
+    <ProjectGuid>{746973F4-6C68-4062-B9C0-DC246F42FF80}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>First</RootNamespace>
-    <AssemblyName>First</AssemblyName>
+    <RootNamespace>Second</RootNamespace>
+    <AssemblyName>Second</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -84,25 +84,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="First.cs">
+    <Compile Include="Second.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="First.Designer.cs">
-      <DependentUpon>First.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Menu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Menu.Designer.cs">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <Compile Include="Second.Designer.cs">
+      <DependentUpon>Second.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="First.resx">
-      <DependentUpon>First.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <EmbeddedResource Include="Second.resx">
+      <DependentUpon>Second.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
