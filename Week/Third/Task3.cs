@@ -14,48 +14,48 @@ namespace Third
 {
     public partial class Task3 : Form
     {
-        Connect connect = new Connect("server = chuc.caseum.ru;port=33333;username=st_2_20_19;password=69816309;database=is_2_20_st19_KURS");
-        MySqlConnection Connection;
+        Connect connect = new Connect("server=chuc.caseum.ru;port=33333;username=st_2_20_19;password=69816309;database=is_2_20_st19_KURS");
+        MySqlConnection conn;
         MySqlDataAdapter MyDA = new MySqlDataAdapter();
         DataTable DT = new DataTable();
         BindingSource BindingS = new BindingSource();
         public void NumberBus()
         {
             DT.Clear();
-            string table = "SELECT id_route AS `id`, way AS `путь`, bus AS `автобус`, price AS `цена` FROM route ON route.id_route = id_route";
-            Connection.Open();
-            MyDA.SelectCommand = new MySqlCommand(table, Connection);
+            string table = "SELECT route.id_route AS `id`, route.way AS `путь`, route.bus AS `автобус`, route.price AS `цена` FROM route";
+            conn.Open();
+            MyDA.SelectCommand = new MySqlCommand(table, conn);
             MyDA.Fill(DT);
             BindingS.DataSource = DT;
             dataGridView1.DataSource = BindingS;
-            Connection.Close();
+            conn.Close();
 
-            dataGridView1.Columns[0].Visible = true;
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].Visible = true;
+            dataGridView1.Columns[2].Visible = true;
             dataGridView1.Columns[3].Visible = true;
-            dataGridView1.Columns[4].Visible = true;
-            dataGridView1.Columns[5].Visible = true;
 
 
 
 
             dataGridView1.Columns[0].FillWeight = 15;
+            dataGridView1.Columns[1].FillWeight = 15;
+            dataGridView1.Columns[2].FillWeight = 15;
             dataGridView1.Columns[3].FillWeight = 15;
-            dataGridView1.Columns[4].FillWeight = 15;
-            dataGridView1.Columns[5].FillWeight = 15;
 
 
 
             dataGridView1.Columns[0].ReadOnly = true;
+            dataGridView1.Columns[1].ReadOnly = true;
+            dataGridView1.Columns[2].ReadOnly = true;
             dataGridView1.Columns[3].ReadOnly = true;
-            dataGridView1.Columns[4].ReadOnly = true;
-            dataGridView1.Columns[5].ReadOnly = true;
 
 
 
             dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
 
             dataGridView1.RowHeadersVisible = false;
@@ -69,31 +69,32 @@ namespace Third
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            conn = connect.Conn();
+            NumberBus();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
 
-            Connection.Open();
+            conn.Open();
             string info1 = "";
             string info2 = "";
             string info3 = "";
             string info4 = "";
-            string sql = $"SELECT *";
-            MySqlCommand cmd = new MySqlCommand(sql, Connection);
+            string sql = $"SELECT route.id_route AS `id`, route.way AS `путь`, route.bus AS `автобус`, route.price AS `цена` FROM route WHERE route.id_route = "+id;
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 info1 = reader[0].ToString();
-                info2 = reader[3].ToString();
-                info3 = reader[4].ToString();
-                info4 = reader[5].ToString();
+                info2 = reader[1].ToString();
+                info3 = reader[2].ToString();
+                info4 = reader[3].ToString();
             }
             reader.Close();
             MessageBox.Show("id:" + info1 + "путь:" + info2 + "автобус:" + info3 + "цена:" + info4);
-            Connection.Close();
+            conn.Close();
         }
     }
 }
