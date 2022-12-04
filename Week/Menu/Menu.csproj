@@ -101,6 +101,10 @@
       <Project>{84c48497-ee32-4a45-8b53-93eb12b13000}</Project>
       <Name>First</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Four\Four.csproj">
+      <Project>{5ef9be63-1048-4462-b26e-c8640a11fb3f}</Project>
+      <Name>Four</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Second\Second.csproj">
       <Project>{746973f4-6c68-4062-b9c0-dc246f42ff80}</Project>
       <Name>Second</Name>

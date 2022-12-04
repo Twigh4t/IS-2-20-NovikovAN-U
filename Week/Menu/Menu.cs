@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using First;
 using Second;
 using Third;
-//using Four;
+using Four;
 //using Fifth;
 
 namespace Menu
@@ -41,6 +41,12 @@ namespace Menu
         private void button2_Click_1(object sender, EventArgs e)
         {
             Form form = new Task2();
+            form.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form form = new Task4();
             form.ShowDialog();
         }
     }
