@@ -20,8 +20,7 @@ namespace Second
                 try
                 {
                     MessageBox.Show("Подключение");
-                    return mySql;
-
+                    return mySql;                  
                 }
                 catch (Exception ex)
                 {
