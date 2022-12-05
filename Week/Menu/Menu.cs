@@ -11,7 +11,7 @@ using First;
 using Second;
 using Third;
 using Four;
-//using Fifth;
+using Fifth;
 
 namespace Menu
 {
@@ -47,6 +47,12 @@ namespace Menu
         private void button4_Click(object sender, EventArgs e)
         {
             Form form = new Task4();
+            form.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Form form = new Task5();
             form.ShowDialog();
         }
     }

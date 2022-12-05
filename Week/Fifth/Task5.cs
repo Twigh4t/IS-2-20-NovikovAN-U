@@ -1,31 +1,29 @@
-﻿using System;
+﻿using ConnectDB;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ConnectDB;
-using MySql.Data.MySqlClient;
 
-namespace Four
+namespace Fifth
 {
-    public partial class Task4 : Form
+    public partial class Task5 : Form
     {
         Connectdb connect = new Connectdb("server=chuc.caseum.ru;port=33333;username=st_2_20_19;password=69816309;database=is_2_20_st19_KURS");
         MySqlConnection conn;
         MySqlDataAdapter MyDA = new MySqlDataAdapter();
         DataTable DT = new DataTable();
         BindingSource BindingS = new BindingSource();
-
         public void GetBD()
         {
             DT.Clear();
-            string sqlview = "SELECT t_datetime.id AS `Код`, t_datetime.fio AS `ФИО`, t_datetime.date_of_Birth `Дата рождения`, t_datetime.photoUrl AS `Ссылка на фото` FROM `t_datetime`";
+            string sqlview = "SELECT t_Uchebka_Novikov.idStud AS `Код`, t_Uchebka_Novikov.fioStud AS `ФИО`, t_Uchebka_Novikov.datetimeStud `Дата рождения` FROM `t_Uchebka_Novikov`";
             conn.Open();
 
             MyDA.SelectCommand = new MySqlCommand(sqlview, conn);
@@ -39,50 +37,31 @@ namespace Four
             dataGridView1.Columns[0].Visible = true;
             dataGridView1.Columns[1].Visible = true;
             dataGridView1.Columns[2].Visible = true;
-            dataGridView1.Columns[3].Visible = false;
-            
 
 
-
-            dataGridView1.Columns[0].FillWeight = 15;
+            dataGridView1.Columns[0].FillWeight = 5;
             dataGridView1.Columns[1].FillWeight = 15;
             dataGridView1.Columns[2].FillWeight = 15;
-            dataGridView1.Columns[3].FillWeight = 15;
-            
 
 
-            dataGridView1.Columns[0].ReadOnly = true;
-            dataGridView1.Columns[1].ReadOnly = true;
-            dataGridView1.Columns[2].ReadOnly = true;
-            dataGridView1.Columns[3].ReadOnly = true;
-            
+            dataGridView1.Columns[0].ReadOnly = false;
+            dataGridView1.Columns[1].ReadOnly = false;
+            dataGridView1.Columns[2].ReadOnly = false;
 
 
             dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            
 
             dataGridView1.RowHeadersVisible = false;
 
             dataGridView1.ColumnHeadersVisible = true;
         }
-        void Image(string a)
-        {
-            var rec = WebRequest.Create(a);
-            using (var res = rec.GetResponse())
-            using (var stream = res.GetResponseStream())
-            { 
-            pictureBox1.Image = Bitmap.FromStream(stream);
-            }
-        }
-        public Task4()
+        public Task5()
         {
             InitializeComponent();
         }
-
-        private void Task4_Load(object sender, EventArgs e)
+        private void Task5_Load(object sender, EventArgs e)
         {
             conn = connect.Connection();
             GetBD();
@@ -90,26 +69,35 @@ namespace Four
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             try
             {
-                string id = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                 conn.Open();
-                //Запрос на выборку ссылки изображения из бд
-                string sql = "SELECT t_datetime.photoUrl AS 'Фото' FROM t_datetime WHERE t_datetime.id =" + id;
+                string fio = textBox1.Text;
+                string datetime = textBox2.Text;
+                string sql = "INSERT INTO `t_Uchebka_Novikov`(fioStud, datetimeStud) VALUES (@a, @b)";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                string pic = cmd.ExecuteScalar().ToString();
-                //Отправляем ссылку фото на обработку в метод
-                Image(pic);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                cmd.Parameters.Add("@a", MySqlDbType.VarChar).Value = fio;
+                cmd.Parameters.Add("@b", MySqlDbType.VarChar).Value = datetime;
+
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Пользователь добавлен");
+                }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
             finally
-            {
+            {               
                 conn.Close();
+                GetBD();
             }
-        }    
+        }
     }
 }

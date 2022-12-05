@@ -97,6 +97,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Fifth\Fifth.csproj">
+      <Project>{7d99ee95-9872-47c0-bd5e-f1634eb997fc}</Project>
+      <Name>Fifth</Name>
+    </ProjectReference>
     <ProjectReference Include="..\First\First.csproj">
       <Project>{84c48497-ee32-4a45-8b53-93eb12b13000}</Project>
       <Name>First</Name>
