@@ -39,9 +39,9 @@ namespace Fifth
             dataGridView1.Columns[2].Visible = true;
 
 
-            dataGridView1.Columns[0].FillWeight = 5;
+            dataGridView1.Columns[0].FillWeight = 3;
             dataGridView1.Columns[1].FillWeight = 15;
-            dataGridView1.Columns[2].FillWeight = 15;
+            dataGridView1.Columns[2].FillWeight = 9;
 
 
             dataGridView1.Columns[0].ReadOnly = false;
